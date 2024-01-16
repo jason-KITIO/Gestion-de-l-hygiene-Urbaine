@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// model entreprise {
+//   id_entreprise      String @id @default(auto()) @map("_id") @db.ObjectId
+//   nom_entreprise     String
+//   Adresse_entreprise String
+//   Contact_entreprise String @default("696 354 128")
+
+//   // @@unique([Adresse_entreprise, Contact_entreprise])
+// }
+
+model programme_de_nettoyage {
+  id                  String             @id @default(auto()) @map("_id") @db.ObjectId
+  nom                 String
+  Date_Debut          DateTime
+  fin_Debut           DateTime
+  frequence_nettoyage String
+  programme_equipe    programme_equipe[]
+  equipe              equipe?            @relation(fields: [equipeId], references: [id])
+  equipeId            String?            @db.ObjectId
+}
+
+model equipe {
+  id                     String                   @id @default(auto()) @map("_id") @db.ObjectId
+  Nom                    String
+  nombre                 Int?
+  programme_de_nettoyage programme_de_nettoyage[]
+  nettoyeur              nettoyeur[]
+  programme_equipe       programme_equipe[]
+}
+
+model nettoyeur {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  nom            String
+  telephone      String         @default("696 354 128")
+  disponibiliter Disponibiliter @default(Disponible)
+  sexe           Sexe           @default(Masculin)
+  role           String?
+  equipeId       String         @db.ObjectId
+  equipe         equipe         @relation(fields: [equipeId], references: [id])
+
+  @@unique([telephone])
+}
+
+model zone_nettoyage {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  quartier      String?
+  ville         String?
+  longitude     String
+  latitude      String
+  zoom          String?
+  Zone_habitant Zone_habitant[]
+}
+
+model habitant {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  nom           String
+  prenom        String?
+  telephone     String          @default("696 354 128")
+  email         String          @default("kanamax@outlook.fr")
+  mot_de_passe  String          @default("********")
+  Zone_habitant Zone_habitant[]
+
+  @@unique([email, telephone])
+}
+
+//Association
+model programme_equipe {
+  id          String                 @id @default(auto()) @map("_id") @db.ObjectId
+  equipeId    String                 @db.ObjectId
+  equipe      equipe                 @relation(fields: [equipeId], references: [id])
+  programmeId String                 @db.ObjectId
+  programme   programme_de_nettoyage @relation(fields: [programmeId], references: [id])
+}
+
+// model equipe_zone {
+//   id_equipe_zone String         @id @default(auto()) @map("_id") @db.ObjectId
+//   equipeId       String         @db.ObjectId
+//   equipe         equipe         @relation(fields: [equipeId], references: [id_equipe])
+//   zoneId         String         @db.ObjectId
+//   zone           zone_nettoyage @relation(fields: [zoneId], references: [id_zone])
+// }
+
+model Zone_habitant {
+  id_Zone_habitant   String         @id @default(auto()) @map("_id") @db.ObjectId
+  Nombre_signalement Int
+  date_heure         DateTime?
+  zoneId             String         @db.ObjectId
+  zone               zone_nettoyage @relation(fields: [zoneId], references: [id])
+  habitantId         String         @db.ObjectId
+  habitant           habitant       @relation(fields: [habitantId], references: [id])
+}
+
+enum Disponibiliter {
+  Disponible
+  Indisponible
+}
+
+enum Sexe {
+  Masculin
+  Feminin
+}
