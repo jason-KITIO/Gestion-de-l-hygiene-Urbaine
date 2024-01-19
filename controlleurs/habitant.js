@@ -10,7 +10,7 @@ const app = express()
 
 const prisma = new PrismaClient()
 
-const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
+// const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
 // const url = env("DATABASE_URL")
 
 // const client = new MongoClient(url)
@@ -20,13 +20,45 @@ const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb
 // const database = client.db('Gestion_Hygiene')
 // const collection = database.collection('habitant')
 const collection = 'habitant'
-
+/*
 const addHabitant = async (req, res) => {
   console.log(req.query)
   const add = await prisma.habitant.create({
     data: req.query
   })
   res.json(add)
+}
+*/
+async function addHabitant(req, res) {
+
+  //   /---------------------------------------------------------convertir en INT--------------------------------------------/
+
+  const newHabitant = {
+    nom: req.body.nom,
+    prenom: req.body.prenom,
+    telephone: req.body.tel,
+    email: req.body.email,
+    mot_de_passe: req.body.password
+  };
+
+
+  // res.json(add)
+
+  console.log("de habitant", req.body)
+
+  try {
+    const add = await prisma.habitant.create({
+      data: newHabitant,
+    })
+    // console.log(req.query)
+    console.log("de habitant", req.body)
+    console.log("habitant créé avec succès :", add, req.body);
+  } catch (error) {
+    console.error("Erreur lors de la création de l'habitant :", error);
+  } finally {
+    // Fermez la connexion au equipe prisma
+    await prisma.$disconnect();
+  }
 }
 
 const showHabitantAll = async (req, res) => {
@@ -70,11 +102,19 @@ const updateHabitant = async (req, res) => {
   res.json(update)
 }
 
-const deleteHabitant = async (req, res) => {
+async function deleteHabitant(req, res){
   // console.log(req.query)
 //   const id = '655e06879a3150274b0ab391'
+// const telephone = req.params.productID
+
+// const index = products.findIndex(product => product.id === id)
+// products.splice(index,1)
+// res.status(200).json('Product deleted')
+
   const users = await prisma.habitant.delete({
-    where: req.query,
+    where: {
+      email_telephone: req.body.email,
+      },
   })
   res.json(users)
 }

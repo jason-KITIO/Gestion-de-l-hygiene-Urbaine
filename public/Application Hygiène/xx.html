@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page de connexion</title>
+</head>
+<body>
+    <h1>Connexion</h1>
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Se connecter</button>
+        <a href="./dashboard20/individu.html"></a>
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (email === "abc" && password === "123") {
+                window.location.href = "./dashboard20/individu.html";
+            } else {
+                window.location.href = "connexion-echouee.html";
+            }
+        });
+    </script>
+</body>
+</html>

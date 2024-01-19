@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emploi de temps</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="Css/EmploieTime.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="main-sidebar">
+
+            <header class="aside-header">
+                <div class="brand">
+                    <img src="images/cc1.png" alt="Logo" />
+                    <h3>Umoja-Wipe</h3>
+                </div>
+                <div class="close" id="closeSidebar">
+                    <span class="material-icons-sharp"> close </span>
+                </div>
+            </header>
+            <div class="sidebar" id="sidebar">
+                <ul class="list-items">
+                    <li class="item">
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                dashboard
+                            </span>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="individu.html">
+                            <span class="material-icons-sharp">
+                                people
+                            </span>
+                            <span>Individus</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="index.html">
+                            <span class="material-symbols-outlined">
+                                Stream
+                            </span>
+                            <span>Signalement</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="./equipe.html" >
+                            <span class="material-symbols-outlined">
+                                Groups
+                            </span>
+                            <span>Equipe</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                textsms
+                            </span>
+                            <span>Notification</span>
+                            <span class="message-count">17</span>
+                        </a>
+                    </li>
+
+                    <li class="item">
+                        <a href="#" class="active">
+                            <span class="material-symbols-outlined">
+                                Event
+                            </span>
+                            <span>Emploi de temps</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                settings
+                            </span>
+                            <span>Paramètres</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <span class="material-icons-sharp"> add </span>
+                            <span>Ajouter une equipe</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                logout
+                            </span>
+                            <span>Se Deconnecter</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-container">
+            <h1 class="main-title">Dashboard</h1>
+            <div class="container">
+                <div class="equipe">
+                    <section class="recent-orders">
+                        <div class="affche" >
+                            <h2 class="recent-orders-title">Affichage de l emploi de temps</h2>
+                            <!--<a href="#" class="show-all">Tout afficher</a>-->
+                        </div>
+                        
+                        <table id="body"  style="margin-top: 20px;">
+                            <thead>
+                            <tr>
+                                <th >Jour</th>
+                                <th>heure</th>
+                                <th>Quartier</th>
+                                <th>Rue</th>
+                                <th>Equipe</th>
+                            </tr>
+                            </thead>
+                      
+                        </table>
+                    
+
+                </div>
+                <div class="membre">
+                    <section class="recent-orders">
+                        <div class="ro-title">
+                            <h2 class="recent-orders-title">             </h2>
+                            <!--<a href="#" class="show-all">Tout afficher</a>-->
+                        </div>
+                       
+
+
+
+                    </section>
+                </div>
+            </div>
+        </main>
+        <!-- Sidebar droite -->
+        <aside class="extrabar">
+            <header class="header-right">
+                <button class="toggle-menu-btn" id="openSidebar">
+                    <span class="material-icons-sharp"> menu </span>
+                </button>
+                <div class="toggle-theme">
+                    <span class="material-icons-sharp active">
+                        tungsten
+                    </span>
+                    <span class="material-icons-sharp"> dark_mode </span>
+                </div>
+                <div class="profile">
+                    <div class="profile-info">
+                        <p>Salut, <strong>Coding</strong></p>
+                        <small>Admin</small>
+                    </div>
+                    <div class="profile-image">
+                        <img src="images/team-4.jpg" alt="" width="100%" />
+                    </div>
+                </div>
+            </header>
+            <h1>Entrer l Emploi de temps</h1>
+
+
+            <form action="" class="formulaire">
+
+                <input type="text" placeholder="Jour" class="nettoyeur" id="day">
+                <input type="text" placeholder="Heure" class="nettoyeur" id="hour">
+                <input type="text" placeholder="Quartier" class="nettoyeur" id="quate">
+                <input type="text" placeholder="Rue" class="nettoyeur" id="ru">
+                <div class="select">
+                    <select name="" id="" class="select">
+                        <option value="1">Equipe 1</option>
+                        <option value="1">Equipe 2</option>
+                        <option value="1">Equipe 3</option>
+                        <option value="1">Equipe 4</option>
+                        <option value="1">Equipe 5</option>
+                    </select>
+                </div>
+               
+            </form>
+            <div class="but">
+            <button class="button"  id="but" onclick="AjoutElement()" >Ajouter</button>
+            
+            <button class="button" onclick="modifiertable();" >Modifier</button>
+            <button class="button" onclick="supprimertable();" >Supprimer</button>
+            </div>
+           
+
+
+    </div>
+    <!---->
+    <script src="js/Emploi.js"></script>
+</body>
+
+</html>

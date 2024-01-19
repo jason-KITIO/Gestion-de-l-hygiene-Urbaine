@@ -10,7 +10,7 @@ const app = express()
 
 const prisma = new PrismaClient()
 
-const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
+// const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
 // const url = env("DATABASE_URL")
 
 // const client = new MongoClient(url)
@@ -21,19 +21,42 @@ const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb
 // const collection = database.collection('nettoyeur')
 const collection = 'nettoyeur'
 
-const addNettoyeur = async (req, res) => {
-  console.log(req.query)
 
-//   /---------------------------------------------------------convertir en INT--------------------------------------------/
-  let nombre = req.query.nombre;
-  let nombreEnInt = parseInt(nombre);
-  req.query.nombre = nombreEnInt;
+// console.log("depuis nettoyeur",data)
+async function addNettoyeur(req, res) {
 
-  const add = await prisma.nettoyeur.create({
-    data: req.query
-  })
-  res.json(add)
+  const newNettoyeur = {
+    nom: req.body.nom,
+    telephone: req.body.telephone,
+    disponibiliter: req.body.Disponibiliter,
+    sexe: req.body.Sexe,
+    equipe: {
+      connect: {
+        id: '65651ddbd97867390d6245e0',
+      }
+    }
+  };
+
+
+  // res.json(add)
+
+  console.log("de nettoyeur", req.body)
+
+  try {
+    const add = await prisma.nettoyeur.create({
+      data: newNettoyeur,
+    })
+    // console.log(req.query)
+    console.log("de nettoyeur", req.body)
+    console.log("nettoyeur créé avec succès :", add, req.body);
+  } catch (error) {
+    console.error("Erreur lors de la création du nettoyeur :", error);
+  } finally {
+    // Fermez la connexion au nettoyeur prisma
+    await prisma.$disconnect();
+  }
 }
+
 
 const showNettoyeurAll = async (req, res) => {
   // console.log(req.query)
@@ -42,19 +65,21 @@ const showNettoyeurAll = async (req, res) => {
     //   nom: 'nettoyeur de test'
     // },
     select: {
-      Nom: true,
-      nombre: true,
+      nom:true,
+      telephone:true,
+      disponibiliter:true,
+      sexe:true,
     }
   })
-  res.json(show)
+  console.log(show)
 }
 const showNettoyeurOne = async (req, res) => {
   // console.log(req.query)
   const users = await prisma.nettoyeur.findMany({
     where: req.query,
     select: {
-        Nom: true,
-        nombre: true,
+      Nom: true,
+      nombre: true,
     }
   })
   res.json(users)
@@ -62,7 +87,7 @@ const showNettoyeurOne = async (req, res) => {
 
 const updateNettoyeur = async (req, res) => {
   // console.log(req.query)
-//   const id = '655e06879a3150274b0ab391'
+  //   const id = '655e06879a3150274b0ab391'
   const update = await prisma.nettoyeur.update({
     data: { nombre: 5 },
     where: req.query,
@@ -72,7 +97,7 @@ const updateNettoyeur = async (req, res) => {
 
 const deleteNettoyeur = async (req, res) => {
   // console.log(req.query)
-//   const id = '655e06879a3150274b0ab391'
+  //   const id = '655e06879a3150274b0ab391'
   const users = await prisma.nettoyeur.delete({
     where: req.query,
   })
@@ -82,7 +107,7 @@ const deleteNettoyeur = async (req, res) => {
 
 // console.log(addNettoyeur)
 module.exports = {
-    addNettoyeur,
+  addNettoyeur,
   showNettoyeurAll,
   showNettoyeurOne,
   updateNettoyeur,

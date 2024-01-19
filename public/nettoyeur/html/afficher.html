@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <ul id="liste"></ul>
+
+  <a href="lien.html">lien</a>
+  
+  <script>
+    // Sélectionnez la liste dans le document
+    var liste = $("#liste");
+
+    // Définissez l'URL de la route /equipe
+    var url = "/nettoyeur";
+
+    // Utilisez la fonction fetch pour faire une requête HTTP GET vers l'URL
+    fetch('http://localhost:3000/nettoyeur')
+      .then((response) => {
+        // Vérifiez que la réponse est OK
+        if (!response.ok) {
+          throw new Error("La réponse n'est pas OK");
+        }
+        // Renvoyez la réponse sous forme de JSON
+        return response.json();
+      })
+      .then((data) => {
+        // Parcourez les objets du tableau data
+        $.each(data, function(index, nettoyeur) {
+          // Créez un élément de liste avec le nom et le nombre de l'équipe
+          var li = $("<li>" + nettoyeur.nom + " "+nettoyeur.telephone +" "+nettoyeur.Disponibiliter +" "+nettoyeur.Sexe +"</li>") ;
+          // Ajoutez l'élément de liste à la liste
+          liste.append(li);
+        });
+      })
+      .catch((error) => {
+        // Affichez l'erreur dans la console
+        console.error("Erreur :", error);
+      });
+  </script>
+</body>
+</html>

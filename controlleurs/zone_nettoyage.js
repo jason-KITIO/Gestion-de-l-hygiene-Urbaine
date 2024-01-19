@@ -10,7 +10,7 @@ const app = express()
 
 const prisma = new PrismaClient()
 
-const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
+// const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
 // const url = env("DATABASE_URL")
 
 // const client = new MongoClient(url)
@@ -21,18 +21,34 @@ const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb
 // const collection = database.collection('zone_nettoyage')
 const collection = 'zone_nettoyage'
 
-const addzone_nettoyage = async (req, res) => {
-  console.log(req.query)
+async function addzone_nettoyage(req, res) {
 
-//   /---------------------------------------------------------convertir en INT--------------------------------------------/
-  let nombre = req.query.nombre;
-  let nombreEnInt = parseInt(nombre);
-  req.query.nombre = nombreEnInt;
+  const newZone_nettoyage = {
+    quartier: req.body.quartier,
+    ville: req.body.ville,
+    longitude: req.body.longitude,
+    latitude: req.body.latitude,
+    Risque: req.body.risque,
+  };
 
-  const add = await prisma.zone_nettoyage.create({
-    data: req.query
-  })
-  res.json(add)
+
+  // res.json(add)
+
+  console.log("de newZone_nettoyage", req.body)
+
+  try {
+    const add = await prisma.zone_nettoyage.create({
+      data: newZone_nettoyage,
+    })
+    // console.log(req.query)
+    console.log("de newZone_nettoyage", req.body)
+    console.log("newZone_nettoyage créé avec succès :", add, req.body);
+  } catch (error) {
+    console.error("Erreur lors de la création du newZone_nettoyage :", error);
+  } finally {
+    // Fermez la connexion au newZone_nettoyage prisma
+    await prisma.$disconnect();
+  }
 }
 
 const showzone_nettoyageAll = async (req, res) => {
@@ -42,8 +58,10 @@ const showzone_nettoyageAll = async (req, res) => {
     //   nom: 'zone_nettoyage de test'
     // },
     select: {
-      Nom: true,
-      nombre: true,
+      quartier: true,
+      ville: true,
+      longitude: true,
+      latitude: true,
     }
   })
   res.json(show)
@@ -53,8 +71,8 @@ const showzone_nettoyageOne = async (req, res) => {
   const users = await prisma.zone_nettoyage.findMany({
     where: req.query,
     select: {
-        Nom: true,
-        nombre: true,
+      Nom: true,
+      nombre: true,
     }
   })
   res.json(users)
@@ -62,7 +80,7 @@ const showzone_nettoyageOne = async (req, res) => {
 
 const updatezone_nettoyage = async (req, res) => {
   // console.log(req.query)
-//   const id = '655e06879a3150274b0ab391'
+  //   const id = '655e06879a3150274b0ab391'
   const update = await prisma.zone_nettoyage.update({
     data: { nombre: 5 },
     where: req.query,
@@ -72,7 +90,7 @@ const updatezone_nettoyage = async (req, res) => {
 
 const deletezone_nettoyage = async (req, res) => {
   // console.log(req.query)
-//   const id = '655e06879a3150274b0ab391'
+  //   const id = '655e06879a3150274b0ab391'
   const users = await prisma.zone_nettoyage.delete({
     where: req.query,
   })
@@ -82,7 +100,7 @@ const deletezone_nettoyage = async (req, res) => {
 
 // console.log(addzone_nettoyage)
 module.exports = {
-    addzone_nettoyage,
+  addzone_nettoyage,
   showzone_nettoyageAll,
   showzone_nettoyageOne,
   updatezone_nettoyage,

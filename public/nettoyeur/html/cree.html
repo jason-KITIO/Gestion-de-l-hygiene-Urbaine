@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Données MongoDB</title>
+</head>
+
+<body>
+  <h1 id="erreur"></h1>
+
+  <h1>Formulaire Client</h1>
+  <form id="clientForm" method="POST" enctype="multipart/form-data">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="telephone">Telephone :</label>
+    <input type="text" id="telephone" name="telephone" required>
+
+    <label for="Disponibiliter">Disponibiliter</label>
+    <select id="Disponibiliter" name="Disponibiliter" required>
+      <option value="Disponible">Disponible</option>
+      <option value="Indisponible">Indisponible</option>
+    </select>
+    
+    <label for="Sexe">Sexe</label>
+    <select id="Sexe" name="Sexe" required>
+      <option value="masculin">Masculin</option>
+      <option value="feminin">Feminin</option>
+    </select>
+    
+    <input type="submit" value="Enregistrer">
+    <button type="button" onclick="verif()">azertyui</button>
+  </form>
+
+  <a href="lien.html">lien</a>
+
+  <script src="../Js/traitement.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Données MongoDB</title>
+</head>
+
+<body>
+  <h1 id="erreur"></h1>
+  quartier String?
+  ville String?
+  longitude String
+  latitude String
+  Risque Risque
+
+  <h1>Formulaire Client</h1>
+  <form id="clientForm" method="POST" enctype="multipart/form-data">
+    <label for="quartier">quartier :</label>
+    <input type="text" id="quartier" name="quartier" required>
+
+    <label for="ville">ville :</label>
+    <input type="text" id="ville" name="ville" required>
+
+    <label for="longitude">longitude :</label>
+    <input type="text" id="longitude" name="longitude" required>
+
+    <label for="latitude">latitude :</label>
+    <input type="text" id="latitude" name="latitude" required>
+
+    <label for="Risque">Risque</label>
+    <select id="Risque" name="Risque" required>
+      <option value="non">non</option>
+      <option value="oui">oui</option>
+    </select>
+
+    <input type="submit" value="Enregistrer">
+    <button type="button" onclick="verif()">azertyui</button>
+  </form>
+
+  <a href="lien.html">lien</a>
+
+  <script src="../js/traitement.js"></script>
+  <!-- <h1>Formulaire Client</h1>
+  <form id="clientForm" method="POST" enctype="multipart/form-data">
+    <label for="Nom">Nom :</label>
+    <input type="text" id="Nom" name="Nom" required>
+
+    <label for="nombre">Numéro :</label>
+    <input type="number" id="nombre" name="nombre" required>
+
+    <input type="submit" value="Enregistrer">
+    <button type="button" onclick="verif()">azertyui</button>
+  </form>
+
+  <a href="lien.html">lien</a>
+
+  <script src="../js/traitement.js"></script> -->
+</body>
+
+</html>

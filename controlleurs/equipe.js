@@ -10,7 +10,7 @@ const app = express()
 
 const prisma = new PrismaClient()
 
-const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
+// const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
 // const url = env("DATABASE_URL")
 
 // const client = new MongoClient(url)
@@ -21,19 +21,42 @@ const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb
 // const collection = database.collection('equipe')
 const collection = 'equipe'
 
-const addEquipe = async (req, res) => {
-  console.log(req.query)
+// const { nom, nombre} = require('../public/js/traitement')
 
-//   /---------------------------------------------------------convertir en INT--------------------------------------------/
-  let nombre = req.query.nombre;
+
+// console.log("depuis equipe",data)
+async function addEquipe(req, res) {
+
+  //   /---------------------------------------------------------convertir en INT--------------------------------------------/
+  let nombre = req.body.nombre;
   let nombreEnInt = parseInt(nombre);
-  req.query.nombre = nombreEnInt;
+  const newClient = {
+    Nom: req.body.nom,
+    nombre: nombreEnInt,
+  };
 
-  const add = await prisma.equipe.create({
-    data: req.query
-  })
-  res.json(add)
+
+  // res.json(add)
+
+  console.log("de equipe", req.body)
+
+  try {
+    const add = await prisma.equipe.create({
+      data: newClient,
+    })
+    // console.log(req.query)
+    console.log("de equipe", req.body)
+    console.log("equipe créé avec succès :", add, req.body);
+  } catch (error) {
+    console.error("Erreur lors de la création du equipe :", error);
+  } finally {
+    // Fermez la connexion au equipe prisma
+    await prisma.$disconnect();
+  }
 }
+
+
+
 
 const showEquipeAll = async (req, res) => {
   // console.log(req.query)
@@ -46,15 +69,17 @@ const showEquipeAll = async (req, res) => {
       nombre: true,
     }
   })
-  res.json(show)
+  console.log(show)
 }
 const showEquipeOne = async (req, res) => {
   // console.log(req.query)
   const users = await prisma.equipe.findMany({
-    where: req.query,
+    where: {
+      id: req.body.nom,
+    },
     select: {
-        Nom: true,
-        nombre: true,
+      Nom: true,
+      nombre: true,
     }
   })
   res.json(users)
@@ -62,19 +87,20 @@ const showEquipeOne = async (req, res) => {
 
 const updateEquipe = async (req, res) => {
   // console.log(req.query)
-//   const id = '655e06879a3150274b0ab391'
+  //   const id = '655e06879a3150274b0ab391'
   const update = await prisma.equipe.update({
     data: { nombre: 5 },
     where: req.query,
   })
   res.json(update)
 }
-
-const deleteEquipe = async (req, res) => {
+async function deleteEquipe(req, res) {
   // console.log(req.query)
-//   const id = '655e06879a3150274b0ab391'
+  //   const id = '655e06879a3150274b0ab391'
   const users = await prisma.equipe.delete({
-    where: req.query,
+    where: {
+      id: req.body.nom,
+    }
   })
   res.json(users)
 }
@@ -82,7 +108,7 @@ const deleteEquipe = async (req, res) => {
 
 // console.log(addequipe)
 module.exports = {
-    addEquipe,
+  addEquipe,
   showEquipeAll,
   showEquipeOne,
   updateEquipe,

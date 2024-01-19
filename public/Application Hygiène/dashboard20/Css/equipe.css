@@ -1,0 +1,124 @@
+:root {
+    --white: #fff;
+    --light: #f3f4ee;
+    --fuscha: #29ADB2;
+    --desaturate-fuscha: #2e5c5e;
+    --desaturate-fuscha-2: hsla(334, 94%, 57%, 0.1);
+    --cyan: hsl(184, 46%, 57%);
+    --desaturate-cyan: hsla(184, 46%, 57%, 0.25);
+    --desaturate-cyan-2: hsla(184, 46%, 57%, 0.15);
+    --light-blue: #bbeef1;
+    --pinkless: #fff3e0;
+    --yellow: #f1b813;
+
+    --text-color-primary: #314657;
+    --text-color-secondary: #58626e;
+    --text-color-third: #9db3be;
+
+    --box-shadow-card: 8px 8px 32px var(--desaturate-fuscha);
+    --box-shadow-card-2: 8px 8px 32px var(--desaturate-cyan);
+    --box-sidebar: 2px 4px 16px var(--desaturate-cyan-2);
+
+    --padding-card: 28px;
+    --border-radius-rounded: 50%;
+    --border-radius-4: 4px;
+    --border-radius-8: 8px;
+    --border-radius-12: 12px;
+    --border-radius-card: var(--padding-card);
+}
+
+.dark-mode {
+    --white: #393e46;
+    --light: #222831;
+    --desaturate-fuscha: hsla(334, 8%, 67%, 0.15);
+
+    --text-color-primary: #eee;
+    --text-color-secondary: #eee;
+
+    --box-shadow-card: 8px 8px 32px var(--desaturate-fuscha);
+    --box-shadow-card-2: 8px 8px 32px var(--desaturate-cyan);
+}
+.formulaire{
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+gap:32px;
+background-color: var(--white);
+border-radius: var(--border-radius-card);
+padding: var(--padding-card);
+box-shadow: var(--box-shadow-card);
+
+}
+.enregis{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:20px;
+}
+
+.select{
+outline: none; 
+border-radius: 12px;  
+width: 12vw; 
+height: 5vh;
+border: 1px solid #bbeef1 ;
+
+}
+
+.nettoyeur{
+outline: none; 
+border-radius: 12px;  
+width: 15vw; 
+height: 5vh;
+border: 2px solid #bbeef1;
+}
+.sexe{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:12px; 
+}
+.but{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button{
+    width: 10vw;
+    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--fuscha);
+    color: white; 
+    
+}
+.container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:32px;
+}
+.equipe{
+    width: 30%;  
+
+}
+
+.equips{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap:20px;
+    background-color: var(--white);
+    border-radius: var(--border-radius-card);
+    box-shadow: var(--box-shadow-card);
+   height: fit-content;
+  
+}
+li{
+    padding-top: 5px;
+    padding-left: 20px;
+    display: flex;
+    font-size: 20px;
+}

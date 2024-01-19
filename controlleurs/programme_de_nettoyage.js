@@ -10,7 +10,7 @@ const app = express()
 
 const prisma = new PrismaClient()
 
-const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
+// const url = "mongodb+srv://Jason_Kitio:Txu6I3aVLaP7EHSo@cluster0.vcmipoc.mongodb.net/Gestion_Hygiene_Final"
 // const url = env("DATABASE_URL")
 
 // const client = new MongoClient(url)

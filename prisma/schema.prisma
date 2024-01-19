@@ -37,6 +37,8 @@ model equipe {
   programme_de_nettoyage programme_de_nettoyage[]
   nettoyeur              nettoyeur[]
   programme_equipe       programme_equipe[]
+
+  @@unique([Nom])
 }
 
 model nettoyeur {
@@ -58,7 +60,7 @@ model zone_nettoyage {
   ville         String?
   longitude     String
   latitude      String
-  zoom          String?
+  Risque        Risque          @default(non)
   Zone_habitant Zone_habitant[]
 }
 
@@ -66,12 +68,10 @@ model habitant {
   id            String          @id @default(auto()) @map("_id") @db.ObjectId
   nom           String
   prenom        String?
-  telephone     String          @default("696 354 128")
+  telephone     String          @unique @default("696 354 128")
   email         String          @default("kanamax@outlook.fr")
   mot_de_passe  String          @default("********")
   Zone_habitant Zone_habitant[]
-
-  @@unique([email, telephone])
 }
 
 //Association
@@ -109,4 +109,9 @@ enum Disponibiliter {
 enum Sexe {
   Masculin
   Feminin
+}
+
+enum Risque {
+  oui
+  non
 }

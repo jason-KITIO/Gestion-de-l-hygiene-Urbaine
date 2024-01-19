@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(122, 121, 121, 0.37);
+            color: black;
+            font-weight: bold;
+            display: none;
+        }
+
+        .container:hover .overlay {
+            display: block;
+            animation: slide 1s forwards;
+        }
+
+        @keyframes slide {
+            0% {
+                top: -500px;
+            }
+            100% {
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="dim (2).jpg" alt="Image" width="500" height="500">
+        <div class="overlay">Bonjour</div>
+    </div>
+</body>
+</html>

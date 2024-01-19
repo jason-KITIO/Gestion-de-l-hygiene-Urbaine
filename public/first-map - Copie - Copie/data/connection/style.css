@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background: url("image/fre1.jpg");
+    background-size: cover;
+    display: flex;
+    height: 100svb;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+
+nav h3 {
+    font-size: 30px;
+}
+
+nav ul {
+    display: flex;
+    width: 15%;
+    margin-top: 0px;
+}
+
+nav ul li {
+    margin-top: 25px;
+    list-style: none;
+    padding: 5%;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover {
+    color: aqua;
+    font-size: 20px;
+    transition: 1s;
+}
+
+nav .ulDeux {
+    display: flex;
+}
+
+nav .ulDeux :first-child {
+    padding: 5%;
+    border-radius: 8px;
+    height: min-content;
+    padding: 10%;
+}
+
+nav .ulDeux :last-child {
+    padding: 5%;
+    border: 3px solid white;
+    border-radius: 8px;
+    height: min-content;
+    padding: 10%;
+}
+
+.photo {
+    width: 30px;
+    height: 30px;
+}
+
+img {
+    transition: all 0.5 ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+nav .ulDeux :hover{
+    font-size: 20px;
+    transition: 1s;
+}
+.grand{
+    /* background-color: aqua; */
+    height: 100svb;
+    padding: 10%;
+    padding-left: 30%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* background-color: #fff; */
+    backdrop-filter: blur(50px);
+    border-radius: 20px;
+    padding: 10ch;
+}
+.form h3{
+    text-align: center;
+}
+input[type="text"]{
+    margin: 10px;
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 1ch;
+}
+.enregitrer{
+    width: 70%;
+    height: 40px;
+    padding-top: 20px;
+    margin-left: 15%;
+    background-color: rgb(81, 171, 103);
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+}
+.enregitrer:hover{
+    padding-top: 10px;
+    color: rgb(17, 28, 125);
+    font-weight: bold;
+    font-size:30px;
+    transition: 2s;
+}
