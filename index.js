@@ -31,6 +31,8 @@ app.use('/delete.html', express.static(__dirname + '/public/html/delete.html'));
 app.use('/lien.html', express.static(__dirname + '/public/html/lien.html'));
 app.use('/index.html', express.static(__dirname + '/public/html/index.html'));
 app.use('/update.html', express.static(__dirname + '/public/html/update.html'));
+app.use('/map.html', express.static(__dirname + '/public/Application Hygiène/conect/map.html'));
+app.use(express.static(__dirname + '/public/Signalement/index.html'));
 
 const RouteEquipe = require('./route/RouteEquipe')
 const RouteNettoyeur = require('./route/RouteNettoyeur')

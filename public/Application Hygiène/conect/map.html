@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Carte dynamique avec Mapbox</title>
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+</head>
+<body>
+    <div id="destiX" class="geocoder"></div>
+  <div id="map"></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmVuZWhta2UiLCJhIjoiY2plYTl6b3c2MHg5ODJxbGV4aXR4Z3p6YSJ9.d3jSAbsqSmpJwyVcp9iXbw';
+    var map = new mapboxgl.Map({
+      container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
+      zoom: 18
+    });
+
+//debut de la recherche
+
+    var desti = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      placeholder: 'Rechercher un lieu',
+      placeholder: 'Rechercher un lieu',
+      bbox: [-180, -90, 180, 90]
+    });
+     
+    desti.on('result', function(ev) {
+      map.flyTo({ center: ev.result.center });
+      var marker = new mapboxgl.Marker().setLngLat(ev.result.center).addTo(map);
+    });
+     
+    document.getElementById('destiX').appendChild(desti.onAdd(map));
+
+//fin de la recherche du dessus
+
+    function success(pos) {
+      var crd = pos.coords;
+      map.setCenter([crd.longitude, crd.latitude]);
+      var marker = new mapboxgl.Marker().setLngLat([crd.longitude, crd.latitude]).addTo(map);
+    };
+    
+    function error(err) {
+      console.warn("ERROR"+(err.code) +":"+ err.messag);
+    };
+    
+    navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
+
+    
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Recherche d'emplacements avec Mapbox</title>
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+</head>
+<body>
+  <div id="geocoder" class="geocoder"></div>
+  <div id="map"></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGlnaXRhbGtpIiwiYSI6ImNqNXh1MDdibTA4bTMycnAweDBxYXBpYncifQ.daSatfva2eG-95QHWC9Mig';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      zoom: 15
+    });
+
+    var desti = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      placeholder: 'Rechercher un lieu',
+    //   countries: 'fr',
+      bbox: [6.124857, 42.464702, 9.835322, 46.710667]
+    });
+     
+    desti.on('result', function(ev) {
+      map.flyTo({ center: ev.result.center });
+      var marker = new mapboxgl.Marker().setLngLat(ev.result.center).addTo(map);
+    });
+     
+    document.getElementById('geocoder').appendChild(desti.onAdd(map));
+  </script>
+</body>
+</html> -->

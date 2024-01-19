@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signalement</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="blog5.jpg">
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <div class="title">
+        <h1 class="titre">BIENVENUE DANS NOTRE PAGE DE SIGNALEMENT DE DECHETS POUR GARDE NOS RUE CLEAN</h1>
+    </div>
+    <div class="container full flex">
+        <form action="">
+            <div class="form-header">
+                <h2>Formulaire de Signalements</h2>
+                <p>Le formulaire va vous permettre d’enregistrer tous les dechets qui sont dans nos rue afin des la maintenir propre loin des maladie et des accidents.</p>
+            </div>
+            <div class="form-container">
+                <div>
+                    <select id="classe" name="classe" required placeholder="Votre Classe">
+                        <option value="">Votre Region de Signalement</option>
+                        <option value="">Centre</option>
+                        <option value="">Littoral</option>
+                        <option value="">Ouest</option>
+                        <option value="">Est</option>
+                        <option value="">Nord Ouest</option>
+                        <option value="">Sud Ouest</option>
+                        <option value="">Nord</option>
+                        <option value="">Sud</option>
+                        <option value="">Extreme Nord</option>
+                        <option value="">Adamaroua</option>
+                    </select>
+                </div>
+                <div>
+                    
+                    <input type="text" id="Ville" name="Ville" required placeholder="Votre Ville">
+                </div>
+                <div>
+                    <input type="text" id="quartier" name="Quartier" required placeholder="Votre Quatier">
+                </div>
+                <div>
+                    <select id="classe" name="classe" required placeholder="Niveau">
+                        <option value="">Niveau</option>
+                        <option value="">Petit</option>
+                        <option value="">Moyen</option>
+                        <option value="">Grand</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="classe" name="classe" required placeholder="Zone a risque">
+                        <option value="">Zone Risquer?</option>
+                        <option value="">Oui</option>
+                        <option value="">Non</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="file" id="photo" name="photo" accept="image/*" required placeholder="Votre photo">
+                </div>
+                <div>
+                    <input type="submit" value="Envoyer" class="dlo" name="envoyer" id="btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<!-- <script src="Index.js"></script> -->
+<script src=".//validation.js"></script>
+
+</html>

@@ -14,4 +14,9 @@ loginButton.addEventListener('click',() =>{
     
 })
 
+const map = document.getElementsByClassName('map')
+
+map.addEventListener('click',() =>{
+    window.location.href = "map.html";
+})
 

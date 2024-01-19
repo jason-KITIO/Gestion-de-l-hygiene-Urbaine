@@ -1,0 +1,333 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: block;
+    font-size: 16px;
+    background-image: url("../p1.png");
+    background-position: center;
+    background-size: 700px;
+    background-repeat: no-repeat;
+    /*background-color: #212121;*/
+    font-family: lato, sans-serif;
+    background-attachment: fixed;
+    /* background-color: rgb(line-height 45dge(red 0%, orange 50%, blue 100%)); */
+}
+.titre{
+    /* position: relative; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 45px;
+    font-family: serif gras;
+    color: rgba(83, 83, 83, 0.519);
+}
+
+
+
+button,
+.dlo {
+
+    border: none;
+    border-radius: 0;
+    outline: none;
+    padding: 16px;
+    font-weight: bold;
+    margin-top: 12px;
+    cursor: pointer;
+    background-color: rgba(19, 19, 172, 0.8);
+    color: white;
+    transition: 200ms ease-in-out;
+}
+
+button:hover,
+.dlo:hover {
+    background-color: rgba(0, 0, 255, 0.8);
+    transition: 200ms ease-in-out;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="number"] {
+    border: none;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 200ms ease-in-out;
+    outline: none;
+}
+
+input[type="text"]:hover,
+input[type="tel"]:hover,
+input[type="password"]:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-top: 2px solid blue;
+    padding: 12px 16px;
+    transition: 200ms ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid blue;
+    padding: 12px 16px;
+    transition: 200ms ease-in-out;
+}
+
+.container {
+    width: 100%;
+    height: fit-content;
+    display: block;
+
+}
+
+.container.full {
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.container.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    padding: 32px;
+    justify-content: flex-start;
+    align-items: center;
+    height: fit-content;
+    width: 512px;
+    transition: 0.5s;
+    background-color: rgba(83, 83, 83, 0.519);
+}
+
+form:hover {
+    backdrop-filter: blur(5px);
+    transition: 0.5s;
+}
+
+form .form-header {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form .form-header h2 {
+    font-size: 32px;
+    line-height: 1.25;
+    color: white;
+}
+
+form .form-header p {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+
+}
+
+form .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    height: fit-content;
+    transition: 0.5s;
+}
+
+form .form-container button {
+    width: 100%;
+}
+
+form .form-container input {
+    width: 95%;
+}
+
+
+.form-hide {
+    display: none;
+    opacity: 0;
+}
+
+.message-side {
+    display: none;
+}
+
+.message-side.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: fit-content;
+    height: auto;
+    gap: 16px;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    color: brown;
+}
+
+.message-box {
+    padding: 24px;
+    border-left: 2px solid rgba(0, 13, 255, 0.4);
+
+    width: 380px;
+    height: fit-content;
+    /* position: fixed; 
+     bottom: 16px;
+    right: 16px; */
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 2px solid rgb(255, 255, 255);
+    transition: 0.5s;
+    font-size: 10px;
+}
+
+.message-box:hover {
+    backdrop-filter: blur(50px);
+    font-size: 13px;
+    transition: 0.5s;
+}
+
+.message-box p {
+    padding: 0;
+    color: rgb(255, 255, 255);
+}
+
+.message-box h4 {
+    font-size: 20px;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: 0.5s;
+}
+
+.message-box h4:hover {
+    font-size: 27px;
+    transition: 0.5s;
+}
+
+/* message dlo */
+.message-side.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: fit-content;
+    height: auto;
+    gap: 16px;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    color: brown;
+}
+
+.message-box {
+    padding: 24px;
+    border-left: 2px solid rgba(0, 13, 255, 0.4);
+
+    width: 380px;
+    height: fit-content;
+    /* position: fixed; 
+     bottom: 16px;
+    right: 16px; */
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 2px solid rgb(255, 255, 255);
+    transition: 0.5s;
+    font-size: 10px;
+}
+
+.message-box:hover {
+    backdrop-filter: blur(50px);
+    font-size: 13px;
+    transition: 0.5s;
+}
+
+.message-box p {
+    padding: 0;
+    color: rgb(255, 255, 255);
+}
+
+.message-box h4 {
+    font-size: 20px;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: 0.5s;
+}
+
+.message-box h4:hover {
+    font-size: 27px;
+    transition: 0.5s;
+}
+
+/* .message-box.active */
+select {
+    appearance: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 200px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 200ms ease-in-out;
+    width: 100%;
+
+}
+
+select option {
+    padding: 10px;
+
+}
+
+select:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-top: 2px solid blue;
+    padding: 12px 16px;
+    transition: 200ms ease-in-out;
+}
+
+select:focus {
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid blue;
+    padding: 12px 16px;
+    transition: 200ms ease-in-out;
+}
+
+input[type="file"] {
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+input[type="file"]:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-top: 2px solid blue;
+    padding: 12px 16px;
+    transition: 200ms ease-in-out;
+}
+
+input[type="file"]:focus {
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

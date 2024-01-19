@@ -42,6 +42,7 @@ function check() {
   
   if (password.length > 8 && emailRegex.test(email)) {
     begin()
+    window.location.href = "/map.html";
   }
 }
 
