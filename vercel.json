@@ -1,0 +1,11 @@
+{
+    "name": "gestion-de-l-hygiene-urbaine",
+    "type": "node-server",
+    "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "/api/$1"
+        }
+    ]
+  }
+  
