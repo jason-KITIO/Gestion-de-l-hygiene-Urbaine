@@ -1,6 +1,5 @@
 {
     "name": "gestion-de-l-hygiene-urbaine",
-    "type": "node-server",
     "builds": [
         {
             "src" : "index.js",
